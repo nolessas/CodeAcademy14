@@ -143,7 +143,7 @@ public class StudentInfoContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=InfoStudentSystem3;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=InfoStudentSystem5;Trusted_Connection=True;");
         }
     }
 
