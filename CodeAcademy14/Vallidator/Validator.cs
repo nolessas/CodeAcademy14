@@ -256,4 +256,41 @@ public static class Validator
             TimeSpan.Parse(l.Time) < endTime &&
             TimeSpan.Parse(l.Time).Add(TimeSpan.FromHours(1.5)) > startTime);
     }
+
+    /// <summary>
+    /// Validates if the given student number is unique in the database.
+    /// </summary>
+    public static bool IsUniqueStudentNumber(StudentInfoContext context, string studentNumber)
+    {
+        return !context.Students.Any(s => s.StudentNumber == studentNumber);
+    }
+
+    /// <summary>
+    /// Validates if the given department code is unique in the database.
+    /// </summary>
+    public static bool IsUniqueDepartmentCode(StudentInfoContext context, string departmentCode)
+    {
+        return !context.Departments.Any(d => d.Code == departmentCode);
+    }
+
+    /// <summary>
+    /// Validates if the given lecture name is unique in the database.
+    /// </summary>
+    public static bool IsUniqueLectureName(StudentInfoContext context, string lectureName)
+    {
+        return !context.Lectures.Any(l => l.Name == lectureName);
+    }
+
+    /// <summary>
+    /// Validates if the given lecture time is within realistic intervals.
+    /// </summary>
+    public static bool IsRealisticLectureTime(string time)
+    {
+        if (TimeSpan.TryParse(time, out var parsedTime))
+        {
+            // Assuming lectures are between 8:00 AM and 10:00 PM
+            return parsedTime >= TimeSpan.FromHours(8) && parsedTime <= TimeSpan.FromHours(22);
+        }
+        return false;
+    }
 }
