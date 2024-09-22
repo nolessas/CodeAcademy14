@@ -18,7 +18,7 @@ public static class Program
         MainMenu.Run();
     }
 
-    // Keep all the existing methods here to maintain compatibility with unit tests
+
     public static void AddStudent(StudentInfoContext context, string name, string surname, string studentNumber, string email, string departmentCode)
     {
         try
